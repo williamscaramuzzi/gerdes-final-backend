@@ -1,0 +1,27 @@
+const path = require('path');
+const database = require('./config/database');
+
+module.exports = {
+    config: path.resolve(__dirname, 'config', 'database.js'),
+    'migrations-path': path.resolve(__dirname, 'database', 'migrations')
+}
+//esse arquivo serve apenas pra rodarmos o sequelize-cli
+//ele diz pro sequelize que o nosso arquivo de configurações (conexão) ao BD
+//é o arquivo de nome database.js na pasta config
+
+//na outra linha ele diz pro sequelize onde nós guardaremos
+//nossas migrations
+
+//o que é migration? r: cada vez que eu preciso incluir um model
+//no banco de dados, é conveniente fazer isso através da minha aplicação
+//então eu "uso" as configurações e modelagem da minha aplicação
+//pra criar as tabelas pela primeira vez, pra "migrar" o que eu modelei para 
+//o banco de dados em si
+//uma migration é uma operação de criação ou deletação de tabelas feita
+//por dentro da minha aplicação, por conveniência
+
+//para criar uma migration
+//npx sequelize migration:create --name=create_policials ou create_viaturas
+//esse comando cria uma pasta migration dentro da pasta database, e coloca lá um arquivo que vai ter
+//o método de create (up: ) e o de delete (down: ), e eu mesmo vou ter que ir lá implementar como 
+//vai ser o meu create table
